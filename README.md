@@ -1,16 +1,23 @@
-# AI Resume Screener & Ranking Pipeline
+# AI-Powered Resume Screening App
 
-An automated recruitment tool that converts unstructured resume text into validated, schema-strict JSON arrays using LLMs, then runs a deterministic, weighted scoring algorithm to screen candidates.
+## Files
+- `app.py`: Streamlit application
+- `requirements.txt`: dependencies
 
-## 🚀 Key Framework Features
-* **Structured Parsing:** Uses `gemini-2.5-flash` with a strict `response_schema` to parse raw text into clean data profiles.
-* **Schema Validation:** Leverages `jsonschema` to guarantee structural and data-type integrity before evaluation.
-* **Weighted Evaluation Matrix:** Calculates matching metrics up to 100 points across Experience (30%), Core Skills (40%), Preferred Skills (20%), and Education (10%).
+## Run locally
+1. Install Python 3.10+.
+2. In this folder run: `pip install -r requirements.txt`
+3. Set the environment variable `GEMINI_API_KEY` or use Streamlit secrets.
+4. Create `.streamlit/secrets.toml` with:
+   ```toml
+   GEMINI_API_KEY = "your-key-here"
+   ```
+5. Run: `streamlit run app.py`
 
-## ⚙️ Setup & Execution
+Do not commit `.streamlit/secrets.toml` or your API key to GitHub.
 
-1. **Clone the Repo & Install Requirements:**
-   ```bash
-   git clone [https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git](https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git)
-   cd YOUR_REPO_NAME
-   pip install -r requirements.txt
+## Deploy
+Push `app.py` and `requirements.txt` to a GitHub repository. On Streamlit Community Cloud, create an app from that repository and entrypoint `app.py`. In Advanced settings / Secrets, add:
+`GEMINI_API_KEY = "your-key-here"`
+
+This app accepts text-based PDF, DOCX, and TXT files. Scanned PDFs may require OCR, which is not included.
