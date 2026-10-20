@@ -1,4 +1,6 @@
+streamlit
 google-genai
 jsonschema
 pandas
-matplotlib
+pypdf
+python-docx
